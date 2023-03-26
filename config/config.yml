@@ -1,0 +1,7 @@
+app:
+  name: 'news-comments-service'
+  version: '1.0.0'
+
+server:
+  port: '8083'
+
