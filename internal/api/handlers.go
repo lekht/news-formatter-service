@@ -6,7 +6,11 @@ import (
 )
 
 type Comment struct {
-	Text string
+	ID       int    `json:"id"`
+	NewsID   int    `json:"news_id"`
+	ParentID int    `json:"parent_id"`
+	Msg      string `json:"msg"`
+	PubTime  int64  `json:"pub_time"`
 }
 
 func (a *API) formatHandler(w http.ResponseWriter, r *http.Request) {
@@ -18,7 +22,7 @@ func (a *API) formatHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ok := a.f.CheckWord(c.Text)
+	ok := a.f.CheckWord(c.Msg)
 	if ok {
 		w.WriteHeader(http.StatusBadRequest)
 		return
